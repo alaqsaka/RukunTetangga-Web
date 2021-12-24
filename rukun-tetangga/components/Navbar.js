@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="container">
       <nav>
-        <h1>Rukun Tetangga</h1>
+        <h1>RUKUN TETANGGA 07</h1>
         <ul>
           <li>
             <Link href="/">
@@ -19,9 +19,9 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <div className="banner">
+      {/* <div className="banner">
         <Image src="/banner.svg" width={966} height={400} />
-      </div>
+      </div> */}
     </div>
   );
 }

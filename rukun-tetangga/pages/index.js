@@ -1,22 +1,22 @@
 import styles from "../styles/Home.module.css";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className={styles.home}>
-      <h2>Apa itu Rukun Tetangga?</h2>
       <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          deleniti rem aspernatur odit hic autem neque repellat alias? Debitis
-          veniam inventore ipsum similique quos animi ipsa asperiores fuga dolor
-          id. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          deleniti rem aspernatur odit hic autem neque repellat alias? Debitis
-          veniam inventore ipsum similique quos animi ipsa asperiores fuga dolor
-          id. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          deleniti rem aspernatur odit hic autem neque repellat alias? Debitis
-          veniam inventore ipsum similique quos animi ipsa asperiores fuga dolor
-          id.
-        </p>
+        <h1 className={styles.title}>
+          Platform untuk kebutuhan data warga RT 07
+        </h1>
+        <p className={styles.subTitle}>#RT07MakinMudah</p>
+      </div>
+      <div className={styles.colIlustrasi}>
+        <Image
+          src="/Saly-12.svg"
+          width={620}
+          height={620}
+          className={styles.ilustrasi}
+        ></Image>
       </div>
     </div>
   );
