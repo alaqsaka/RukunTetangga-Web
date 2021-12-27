@@ -22,12 +22,19 @@ export default function Navbar() {
               <a>Guides</a>
             </Link>
           </li>
-          <li onClick={login} className="btn">
-            Login/Signup
-          </li>
-          <li onClick={logout} className="btn">
-            Logout
-          </li>
+          {/* If user not login shows login/signup button */}
+          {!user && (
+            <li onClick={login} className="btn">
+              Login/Signup
+            </li>
+          )}
+          {user && <li>{user.email}</li>}
+          {/* If user login shows logout button */}
+          {user && (
+            <li onClick={logout} className="btn">
+              Logout
+            </li>
+          )}
         </ul>
       </nav>
       {/* <div className="banner">
