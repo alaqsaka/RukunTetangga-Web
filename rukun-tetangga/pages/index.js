@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div className={styles.colIlustrasi}>
         <Image
-          src="/Saly-12.svg"
+          src="/Saly-12.png"
           width={620}
           height={620}
           className={styles.ilustrasi}
