@@ -33,7 +33,6 @@ export default function Dashboard() {
         })
         .then((data) => {
           setDataPenduduk(data);
-          console.log("dataPenduduk " + dataPenduduk);
           setError(null);
         })
         .catch((err) => {
