@@ -7,7 +7,7 @@ exports.handler = async () => {
       NIK: 367406150062312,
       umur: 19,
       alamat: "Icebox Jl. Yellow Box No. 1",
-      jenis_kelami: "P",
+      jenis_kelamin: "P",
     },
   };
 
