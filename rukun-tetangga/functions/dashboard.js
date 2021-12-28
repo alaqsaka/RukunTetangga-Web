@@ -1,15 +1,33 @@
 exports.handler = async (event, context) => {
-  const guides = [
-    { title: "Beat all Zelda Bosses Like a Boss", author: "mario" },
-    { title: "Mario Kart Shortcuts You Never Knew Existed", author: "luigi" },
-    { title: "Ultimate Street Fighter Guide", author: "chun-li" },
+  const penduduk = [
+    {
+      name: "Dzekov",
+      NIK: 367406150062312,
+      umur: 19,
+      alamat: "Icebox Jl. Yellow Box No. 1",
+      jenis_kelamin: "P",
+    },
+    {
+      name: "Jett",
+      NIK: 367406150063211,
+      umur: 19,
+      alamat: "Icebox Jl. Yellow Box No. 2",
+      jenis_kelamin: "P",
+    },
+    {
+      name: "John Doe",
+      NIK: 3674061500620921,
+      umur: 19,
+      alamat: "Icebox Jl. Yellow Box No. 3",
+      jenis_kelamin: "P",
+    },
   ];
 
   if (context.clientContext.user) {
     // fetch data & then return
     return {
       statusCode: 200,
-      body: JSON.stringify(guides),
+      body: JSON.stringify(penduduk),
     };
   }
 
@@ -17,7 +35,7 @@ exports.handler = async (event, context) => {
   return {
     statusCode: 401,
     body: JSON.stringify({
-      mssg: "ah ah ah, you must be logged into see this",
+      mssg: "Sekarang engga ada data karena kamu belum login",
     }),
   };
 };

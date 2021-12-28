@@ -4,7 +4,7 @@ import AuthContext from "../stores/authContext";
 
 export default function Guides() {
   const { user, authReady, login } = useContext(AuthContext);
-  const [guides, setGuides] = useState(null);
+  const [dataPenduduk, setDataPenduduk] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -20,17 +20,19 @@ export default function Guides() {
         .then((res) => {
           if (!res.ok) {
             login();
-            throw Error("You must be logged in to view this content");
+            throw Error(
+              "Harus login terlebih dahulu baru bisa liat konten ..."
+            );
           }
           return res.json();
         })
         .then((data) => {
           setError(null);
-          setGuides(data);
+          setDataPenduduk(data);
         })
         .catch((err) => {
           setError(err.message);
-          setGuides(null);
+          setDataPenduduk(null);
         });
     }
   }, [user, authReady]);
@@ -45,17 +47,14 @@ export default function Guides() {
         </div>
       )}
 
-      {guides &&
-        guides.map((guide) => (
-          <div key={guide.title} className={styles.card}>
-            <h3>{guide.title}</h3>
-            <h4>written by {guide.author}</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
-              corrupti iste ab magnam dignissimos id maxime rerum quae minima.
-              Delectus maxime culpa est consequatur veritatis, perspiciatis cum
-              corrupti possimus quis?
-            </p>
+      {dataPenduduk &&
+        dataPenduduk.map((penduduk) => (
+          <div key={penduduk.name} className={styles.card}>
+            <h3>{penduduk.name}</h3>
+            <h4>{penduduk.umur}</h4>
+            <h4>{penduduk.NIK}</h4>
+            <h4>{penduduk.alamat}</h4>
+            <h4>{penduduk.jenis_kelamin}</h4>
           </div>
         ))}
     </div>
