@@ -32,7 +32,7 @@ export default function Dashboard() {
           return res.json();
         })
         .then((data) => {
-          setDataPenduduk(data.data);
+          setDataPenduduk(data);
           console.log("dataPenduduk " + dataPenduduk);
           setError(null);
         })

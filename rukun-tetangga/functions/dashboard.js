@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
   if (context.clientContext.user) {
     return {
       statusCode: 200,
-      body: JSON.stringify(dataPenduduk),
+      body: JSON.stringify(dataPenduduk.data),
     };
   }
 
