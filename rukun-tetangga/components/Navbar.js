@@ -19,8 +19,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/guides">
-                <a>Guides</a>
+              <Link href="/dashboard">
+                <a>Dashboard</a>
               </Link>
             </li>
             {/* If user not login shows login/signup button */}
