@@ -1,21 +1,16 @@
-import { useContext, useEffect } from "react";
-import { useState } from "react/cjs/react.development";
-import AuthContext from "../stores/authContext";
+import { useContext, useEffect, useState } from "react";
 import styles from "../styles/dashboard.module.css";
+import AuthContext from "../stores/authContext";
 
-export default function Dashboard() {
-  // Check if user login or not
-  const { user, authReady } = useContext(AuthContext);
-  // console.log(user.token.access_token);
-  const [dataPenduduk, setDataPenduduk] = useState(null);
+export default function Guides() {
+  const { user, authReady, login } = useContext(AuthContext);
+  const [guides, setGuides] = useState(null);
   const [error, setError] = useState(null);
 
-  // When the page refreshed, it will run again and check if the user
-  // Login or not
   useEffect(() => {
     if (authReady) {
       fetch(
-        ".netlify/functions/dashboard",
+        "/.netlify/functions/dashboard",
         user && {
           headers: {
             Authorization: "Bearer " + user.token.access_token,
@@ -24,41 +19,43 @@ export default function Dashboard() {
       )
         .then((res) => {
           if (!res.ok) {
-            // Ini adalah message property yang di-pass ke catch
-            throw Error(
-              "Harus login terlebih dahulu baru bisa liat konten ..."
-            );
+            login();
+            throw Error("You must be logged in to view this content");
           }
           return res.json();
         })
         .then((data) => {
-          setDataPenduduk(data);
           setError(null);
+          setGuides(data);
         })
         .catch((err) => {
           setError(err.message);
-          setDataPenduduk(null);
+          setGuides(null);
         });
     }
   }, [user, authReady]);
 
   return (
-    <div className={styles.dashboard}>
-      {!authReady && <div>Loading ... </div>}
+    <div className={styles.guides}>
+      {!authReady && <div>Loading...</div>}
+
       {error && (
         <div className={styles.error}>
           <p>{error}</p>
         </div>
       )}
 
-      {dataPenduduk &&
-        dataPenduduk.map((penduduk) => (
-          <div key={penduduk.name} className={styles.card}>
-            <h3>{penduduk.name}</h3>
-            <h4>{penduduk.umur}</h4>
-            <h4>{penduduk.NIK}</h4>
-            <h4>{penduduk.alamat}</h4>
-            <h4>{penduduk.jenis_kelamin}</h4>
+      {guides &&
+        guides.map((guide) => (
+          <div key={guide.title} className={styles.card}>
+            <h3>{guide.title}</h3>
+            <h4>written by {guide.author}</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. At
+              corrupti iste ab magnam dignissimos id maxime rerum quae minima.
+              Delectus maxime culpa est consequatur veritatis, perspiciatis cum
+              corrupti possimus quis?
+            </p>
           </div>
         ))}
     </div>

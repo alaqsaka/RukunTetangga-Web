@@ -1,43 +1,23 @@
 exports.handler = async (event, context) => {
-  const data = [
-    {
-      name: "Dzekov",
-      NIK: 367406150062312,
-      umur: 19,
-      alamat: "Icebox Jl. Yellow Box No. 1",
-      jenis_kelamin: "P",
-    },
-    {
-      name: "Jett",
-      NIK: 367406150063211,
-      umur: 19,
-      alamat: "Icebox Jl. Yellow Box No. 2",
-      jenis_kelamin: "P",
-    },
-    {
-      name: "John Doe",
-      NIK: 3674061500620921,
-      umur: 19,
-      alamat: "Icebox Jl. Yellow Box No. 3",
-      jenis_kelamin: "P",
-    },
+  const guides = [
+    { title: "Beat all Zelda Bosses Like a Boss", author: "mario" },
+    { title: "Mario Kart Shortcuts You Never Knew Existed", author: "luigi" },
+    { title: "Ultimate Street Fighter Guide", author: "chun-li" },
   ];
 
-  // If there is a user property on the client context
-  // if there is a token, user logged in, show the data
   if (context.clientContext.user) {
+    // fetch data & then return
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify(guides),
     };
   }
 
+  // return error status
   return {
     statusCode: 401,
     body: JSON.stringify({
-      data: {
-        message: "Sekarang engga ada data karena kamu belum login",
-      },
+      mssg: "ah ah ah, you must be logged into see this",
     }),
   };
 };
